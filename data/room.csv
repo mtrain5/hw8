@@ -1,0 +1,33 @@
+name,type,capacity,notes
+King 136,Lecture Room,90,
+King 140,Lecture Room,32,
+King 143,Lecture Room,32,
+King 148,Lecture Room,48,
+King 150,Lecture Room,40,Group seating
+King 159,Lecture Room,170,
+King 236,Lecture Room,50,Group seating; Linux laptops
+King 243,Lecture Room,36,
+King 248,Computer Lab,30,CS Linux lab #1
+King 250,Computer Lab,34,CS Linux lab #2
+King 259,Lecture Room,75,nTelos room
+King 336,Computer Lab,32,IT Linux Lab
+King 348,Lecture Room,36,
+King 350,Lecture Room,48,
+EnGeo 0303,Lecture Room,28,
+EnGeo 1202,Lecture Room,36,
+EnGeo 1204,Lecture Room,50,
+EnGeo 1207,Lecture Room,30,
+EnGeo 1208,Lecture Room,40,
+EnGeo 1209,Lecture Room,55,
+EnGeo 1210,Lecture Room,60,
+EnGeo 1301,Lecture Room,126,
+EnGeo 1302,Lecture Room,160,
+EnGeo 2202,Lecture Room,32,
+EnGeo 2203,Laboratory,24,High tables/benches
+EnGeo 2204,Computer Lab,32,CS Linux lab #3
+EnGeo 2208,Lecture Room,40,
+EnGeo 2209,Lecture Room,32,Group seating; Linux laptops
+EnGeo 2210,Lecture Room,60,
+EnGeo 2301,Lecture Room,322,
+EnGeo 3009,Laboratory,28,
+EnGeo 3107,Laboratory,32,

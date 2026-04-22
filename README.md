@@ -1,6 +1,6 @@
 # Hotel Database
 
-![Long exposure photo of hotel](HotelMadison.jpg){style="max-width: 4in;"}
+![Long exposure photo of hotel](./images/HotelMadison.jpg)
 <br><small>Image source:
 [hotelmadison.com](https://www.hotelmadison.com/)
 </small>
@@ -76,4 +76,3 @@ It is a strange fact that some people are so afraid of the number 13, that some 
 The floors are just numbered ... 9, 10, 11, 12, 14, 15, 16, ...
 This will make people who just don't like the number 13 on their room comfortable.
 But some people, like Mr. X, take it more seriously.
-
