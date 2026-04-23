@@ -1,5 +1,5 @@
 # CS374 Hotel Database Final Report
-*your names*
+*Marcus Tran and Matthew Berggren*
 
 ## ER Model
 *insert the image here*
