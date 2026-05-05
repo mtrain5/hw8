@@ -53,7 +53,7 @@ We made three changes to the data to support the queries. First, we added fake.s
 
 ## Queries
 - General query file: [queries.sql](./queries/queries.sql)
-# Here are the steps to do before each query:
+### Here are the steps to do before each query:
 - Step 0: drop tables
 by running [drop_fk.sql](./database/drop_fk.sql)
 - Step 1: build the schema
