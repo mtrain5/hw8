@@ -205,7 +205,6 @@ EXPECTED SELECT RESULT:
 
 - [q3.sql](./queries/q3.sql)
 
-![i](./images/i7.png)
 ![i](./images/i8.png)
 ![i](./images/i9.png)
 
