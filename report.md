@@ -63,9 +63,31 @@ by running [add_fk.sql](./database/add_fk.sql)
 - Step 3: generate data
 by running [generate.py](./data/generate.py) or [load.sql](./data/load.sql) if on pgadmin only
 - Step 4: run the queries below
+
+
+EXISTING DATA OVERVIEW:
+  Hotel A = The Grand Shenandoah (Harrisonburg, VA)
+    - Season: High Season (Jun 1 - Aug 31 2025)
+    - Room types: Standard Single, Double, Suite
+    - Pre-loaded condition: one Standard Single room is already
+      checked_in from Jul 15-17 by an existing guest, so it will
+      not appear as available in Query 1.
+
+  Hotel B = Blue Ridge Inn (Staunton, VA)
+    - Season: Summer Season (May 25 - Sep 1 2025)
+    - Room types: Standard Single, Double
+    - Pre-loaded condition: one Double room is already checked_in
+      from Jul 18-21 by an existing guest (Laura Torres equivalent),
+      so it will not appear as available in Query 2.
+    - Pre-loaded condition: Mrs. Smith (gold guest) already has a
+      reservation for a Double room checking in Jul 18 2025 with
+      Status = 'reserved'. Mr. Smith does not yet exist in the DB.
 ### Query 1
 
 - [q1.sql](./queries/q1.sql)
+Query 1 Explanation:
+
+
 
 ![i](./images/i1.png)
 ![i](./images/i2.png)
