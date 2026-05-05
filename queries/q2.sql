@@ -80,3 +80,11 @@ WHERE  h.Name      = 'Blue Ridge Inn'
   AND  rr.Status   = 'checked_in'
   AND  rr.CheckInDate = '2025-07-18'
 LIMIT 1;
+
+-- 2c) ecplciptiy show stuff
+SELECT rr.RoomID, rr.Status, rr.CheckInDate, o.Name
+FROM RESERVED_ROOM rr
+JOIN OCCUPANTS o ON o.ReservedRoomID = rr.ReservedRoomID
+JOIN RESERVATION res ON res.ReservationID = rr.ReservationID
+JOIN HOTEL h ON h.HotelID = res.HotelID
+WHERE h.Name = 'Blue Ridge Inn' AND rr.CheckInDate = '2025-07-18';

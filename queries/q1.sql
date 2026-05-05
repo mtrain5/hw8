@@ -78,3 +78,20 @@ FROM new_reservation r,
 JOIN HOTEL h ON h.HotelID = rt.HotelID
 WHERE h.Name       = 'The Grand Shenandoah'
   AND rt.type_name = 'Double';
+
+  -- 1c) explitgiclty show stuff
+  SELECT
+    rt.type_name,
+    rp.DayOfTheWeek,
+    rp.Price,
+    ROUND(rp.Price * (1 - c.DiscountPercent), 2) AS discounted_price
+FROM ROOM_TYPE rt
+JOIN HOTEL h ON h.HotelID = rt.HotelID
+JOIN ROOM_PRICE rp ON rp.RoomTypeID = rt.RoomTypeID
+JOIN SEASON s ON s.SeasonID = rp.SeasonID AND s.HotelID = rt.HotelID
+JOIN CATEGORY c ON c.CategoryName = 'gold'
+WHERE h.Name = 'The Grand Shenandoah'
+  AND s.StartDate <= '2025-07-15'
+  AND s.EndDate >= '2025-07-16'
+  AND rp.DayOfTheWeek IN ('Tue', 'Wed')
+ORDER BY rt.type_name, rp.DayOfTheWeek;

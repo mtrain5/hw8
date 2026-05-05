@@ -88,3 +88,10 @@ WHERE  ReservationID IN (
                  AND  rr.CheckInDate = '2025-07-18'
            )
 );
+
+-- 3d) explicitly show stuff
+SELECT rr.Status, res.Status
+FROM RESERVED_ROOM rr
+JOIN RESERVATION res ON res.ReservationID = rr.ReservationID
+JOIN HOTEL h ON h.HotelID = res.HotelID
+WHERE h.Name = 'Blue Ridge Inn' AND rr.CheckInDate = '2025-07-18';
