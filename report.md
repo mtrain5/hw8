@@ -35,55 +35,47 @@ Relational Model / drop_create_tables.sql changes from HW 7:
 ## Database creation
 *Link the files here*
 
-- Drop tables: [drop.sql](./database/drop.sql)
-- Create tables: [create.sql](./database/alter.sql)
-- Add constraints to tables: [alter.sql](./database/alter.sql)
+- Drop tables: [drop_fk.sql](./database/drop_fk.sql)
+- Create tables: [drop_create_tables.sql](./database/drop_create_tables.sql)
+- Add constraints to tables: [add_fk.sql](./database/add_fk.sql)
 
-*They should be in a subdirectory called database*
-
-*Describe any changes very briefly: for example:*
-
-We changed the scripts to match updated model shown in previous section.
+We changed the scripts to match updated model shown in previous section. The only real change was to the create.sql, where we added an index.
 
 ## Data
-*Link the files here*
 
 - Add some data from csv files: [load.sql](./data/load.sql)
      - [room.csv](./data/room.csv)
 - Add some data from using Python and faker: [generate.py](./data/generate.py)
+- Separate file called hw8_generate.py for demonstration in class using marcus's pgadmin. [hw8_generate.py](./data/hw8_generate.py)
 
-*They should be in a subdirectory called data*
 
-*Describe any changes very briefly: for example:*
-
-We changed the data to facilitate the queries, as described in the following sections.  We also changed how we loaded the data for X, Y and Z to using insert statements rather than `faker`.
+We made three changes to the data to support the queries. First, we added fake.seed_instance(42) so that Faker-generated values (addresses, phone numbers, ID numbers) are reproducible across runs. Second, we restructured the room type and room ID lookups into dictionaries (rt_ids[hotel][type_name] and room_ids[rtid]) for cleaner reference throughout the reservation setup. Third, we switched the per-day price multiplier to be assigned once per room type rather than re-rolled each season, guaranteeing that weekday prices differ from one another consistently — which is required for Q1 (Tue ≠ Wed) and Q3 (Fri ≠ Sat). Static insert statements were used instead of Faker for all query-critical fields: hotel names, season dates, room type definitions, service type names, guest categories, and all reservation/bill/occupant rows tied to the five query scenarios.
 
 ## Queries
-
+- General query file: [queries.sql](./queries/queries.sql)
 ### Query 1
 *Link the code file(s) here from subdirectory queries*
 
-For example:
-- [workshop_leader.py](./queries/workshop_leader.py)
+- [q1.sql](./queries/q1.sql)
 
 *Describe the queries in detail with screenshots of the data setup and the results*
 
 ### Query 2
-*Link the code file(s) here from subdirectory queries*
+- [q2.sql](./queries/q2.sql)
 
 *Describe the queries in detail with screenshots of setup and results*
 
 ### Query 3
-*Link the code file(s) here from subdirectory queries*
+- [q3.sql](./queries/q3.sql)
 
 *Describe the queries in detail with screenshots of setup and results*
 
 ### Query 4
-*Link the code file(s) here from subdirectory queries*
+- [q4.sql](./queries/q4.sql)
 
 *Describe the queries in detail with screenshots of setup and results*
 
 ### Query 5
-*Link the code file(s) here from subdirectory queries*
+- [q5.sql](./queries/q5.sql)
 
 *Describe the queries in detail with screenshots of setup and results*
