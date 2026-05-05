@@ -54,7 +54,6 @@ We made three changes to the data to support the queries. First, we added fake.s
 ## Queries
 - General query file: [queries.sql](./queries/queries.sql)
 ### Query 1
-*Link the code file(s) here from subdirectory queries*
 
 - [q1.sql](./queries/q1.sql)
 
