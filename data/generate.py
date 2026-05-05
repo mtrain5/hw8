@@ -1,6 +1,5 @@
 """
-HW7 - Hotel Database Data Loader
-Run: python load_data.py
+HW8 - Hotel Database Data Loader
 
 Minimum requirements met:
   5 hotels, 2 seasons each, 2 categories (standard/gold),
