@@ -1,6 +1,3 @@
-
-
-
 -- ============================================================
 -- QUERY SET 1: Reservations
 -- New VIP (gold) guest wants a room at Hotel A, Jul 15-17 2025.
