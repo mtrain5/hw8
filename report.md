@@ -61,7 +61,7 @@ by running [drop_create_tables.sql](./database/drop_create_tables.sql)
 - Step 2: add fk
 by running [add_fk.sql](./database/add_fk.sql)
 - Step 3: generate data
-by running [generate.py](./data/generate.py)
+by running [generate.py](./data/generate.py) or [load.sql](./data/load.sql) if on pgadmin only
 - Step 4: run the queries below
 ### Query 1
 
