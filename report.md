@@ -3,11 +3,12 @@
 
 ## ER Model
 *insert the image here*
-![conference review EER](./images/Relational_Model_HW8.png)
+![conference review EER](./images/Entity_Relation_HW8.png)
 *describe any changes since HW7*
 
 ## Relational Model
 *insert the image(s) here*
+![conference review EER](./images/Relational_Model_HW8.png)
 
 - Conference Review System: ![conference review relational model](./images/ConferenceReviewRelational-mysql.png)
 - madiSTEM System: ![madistem relational model - Workbench style](./images/madistem-relational.png)
