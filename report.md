@@ -85,6 +85,8 @@ EXISTING DATA OVERVIEW:
 ### Query 1
 
 - [q1.sql](./queries/q1.sql)
+
+
 Query 1 Explanation:
   - The Grand Shenandoah has 3 room types: Standard Single,
     Double, and Suite.
@@ -119,11 +121,7 @@ EXPECTED SELECT RESULT:
     Double was chosen because it appeared as available in 1a.
     RoomID is NULL at booking time — a specific room is only
     assigned at check-in.
-
-
-![i](./images/i1.png)
-![i](./images/i2.png)
-![i](./images/i3.png)
+    
 ![i](./images/i4.png)
 ![i](./images/i5.png)
 ![i](./images/i6.png)
