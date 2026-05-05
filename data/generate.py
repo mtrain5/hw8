@@ -1,5 +1,5 @@
 """
-HW8 - Hotel Database Data Loader
+HW8
 
 Minimum requirements met:
   5 hotels, 2 seasons each, 2 categories (standard/gold),
