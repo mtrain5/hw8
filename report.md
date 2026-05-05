@@ -3,17 +3,34 @@
 
 ## ER Model
 *insert the image here*
-![conference review EER](./images/ConferenceReviewEER.drawio.png)
-*describe any changes since HW7*
+![Entity Relational Model](./images/Entity_Relation_HW8.png)
+ER model changes from HW 7:
+-	changed total_price to “price” for the SERVICE_TYPE table
+-	Added a “Status” string to RESERVED_ROOM table
+-	Added a “Status” string to BILL table
+-	Removed “Category_type” from GUEST table
+-	Removed “is_guest” from OCCUPANTS table
+-	Renamed date/time to “BookingDateTime” for clarity in RESERVATION
+-	Added a “CAN BE A” relation between Room and Reserved_Room
+-	Removed Quantity field in Reserved_Room
+
 
 ## Relational Model
 *insert the image(s) here*
+![Relational Model](./images/Relational_Model_HW8.png)
+Relational Model / drop_create_tables.sql changes from HW 7:
+-	changed total_price to “price” for the SERVICE_TYPE table
+-	Removed “Category_type” from GUEST table
+-	Removed isGuest Boolean in OCCUPANTS, replaced with a nullable GuestID reference to the GUEST table
+-	Changed ServiceTypeName to not null
+-	Changed Services table to all caps “SERVICES” to reflect the naming norms of the database
+-	Changed DateTime to BookingDateTime for clarity in RESERVATION
+-	Changed type of GuestID FK in OCCUPANT to Int instead of Boolean
+-	Change type of DiscountPercent in CATEGORY from Int to decimal(5,2) to reflect percentages and make math easier when calculating the discount in the queries.
+-	Added a nullable RoomID FK to RESERVED_ROOM to reference ROOM. This ensures sure you can directly connect and relate the reserved room to the specific room ID number in the database.
+-	Removed the Quantity field in RESERVED_ROOM
+-	Added a “Status” string to RESERVED_ROOM table so it can have values like “Checked-in” or “unreserved”
 
-- Conference Review System: ![conference review relational model](./images/ConferenceReviewRelational-mysql.png)
-- madiSTEM System: ![madistem relational model - Workbench style](./images/madistem-relational.png)
-- madiSTEM System (dbdiagram style): ![madistem relational model - dbdiagram style](./images/schema.png)
-
-*Describe any changes since HW7*
 
 ## Database creation
 *Link the files here*
