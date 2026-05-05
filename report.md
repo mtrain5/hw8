@@ -79,7 +79,9 @@ You run 1a first, and then 1b
 ### Query 2
 - [q2.sql](./queries/q2.sql)
 
-*Describe the queries in detail with screenshots of setup and results*
+![i](./images/q3.png)
+![i](./images/q3a.png)
+![i](./images/q3b.png)
 
 ### Query 3
 - [q3.sql](./queries/q3.sql)
