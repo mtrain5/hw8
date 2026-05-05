@@ -167,8 +167,6 @@ EXPECTED SELECT RESULT:
 
 - [q2.sql](./queries/q2.sql)
 
-![i](./images/q3.png)
-![i](./images/q3a.png)
 ![i](./images/q3b.png)
 
 ### Query 3
