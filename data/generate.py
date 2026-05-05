@@ -1,5 +1,6 @@
 """
-HW8
+HW 8
+Run: python load_data.py
 
 Minimum requirements met:
   5 hotels, 2 seasons each, 2 categories (standard/gold),
@@ -25,7 +26,7 @@ fake.seed_instance(42)
 
 conn = psycopg2.connect(
     host="data.cs.jmu.edu",
-    port=5433,
+    port=5432,
     dbname="sp26",
     user="berggrmb",
     password="113944400",
@@ -36,7 +37,7 @@ print("Connected.")
 
 # ── TRUNCATE ──────────────────────────────────────────────────
 cur.execute("""
-    TRUNCATE Services, BILL, OCCUPANTS, RESERVED_ROOM, RESERVATION,
+    TRUNCATE SERVICES, BILL, OCCUPANTS, RESERVED_ROOM, RESERVATION,
              GUEST, ROOM, ROOM_TYPE_FEATURE, ROOM_PRICE, ROOM_TYPE,
              SEASON, HOTEL_FEATURE, HOTEL_PHONE, CATEGORY, HOTEL
     RESTART IDENTITY CASCADE;
@@ -314,7 +315,7 @@ cur.execute(
 )
 bill_smith = cur.fetchone()[0]
 cur.execute(
-    "INSERT INTO Services (BillID, GuestID, ServiceTypeID, Quantity, DateTime, Price) VALUES (%s,%s,%s,%s,%s,%s)",
+    'INSERT INTO SERVICES (BillID, GuestID, ServiceTypeID, Quantity, DateTime, Price) VALUES (%s,%s,%s,%s,%s,%s)',
     (bill_smith, guest_ids[1], SVC_ROOM, 1, '2025-07-18 20:00:00', svc_charge)
 )
 cur.execute("UPDATE RESERVED_ROOM SET Status='checked_out' WHERE ReservedRoomID=%s", (rr_smith,))
@@ -344,7 +345,7 @@ cur.execute(
     (rr_g2A, 'Double 2 nights. Gold discount.', total_g2A, date(2025,8,7), 'paid')
 )
 bill_g2A = cur.fetchone()[0]
-cur.execute("INSERT INTO Services (BillID, GuestID, ServiceTypeID, Quantity, DateTime, Price) VALUES (%s,%s,%s,%s,%s,%s)",
+cur.execute('INSERT INTO SERVICES (BillID, GuestID, ServiceTypeID, Quantity, DateTime, Price) VALUES (%s,%s,%s,%s,%s,%s)',
             (bill_g2A, guest_ids[2], SVC_PARK, 2, '2025-08-05 15:00:00', 18.00))
 cur.execute("UPDATE BILL SET TotalAmount = TotalAmount + 18.00 WHERE BillID=%s", (bill_g2A,))
 
@@ -369,7 +370,7 @@ cur.execute(
     (rr_g2B, 'Standard Single 2 nights. Gold discount.', total_g2B, date(2025,9,7), 'paid')
 )
 bill_g2B = cur.fetchone()[0]
-cur.execute("INSERT INTO Services (BillID, GuestID, ServiceTypeID, Quantity, DateTime, Price) VALUES (%s,%s,%s,%s,%s,%s)",
+cur.execute('INSERT INTO SERVICES (BillID, GuestID, ServiceTypeID, Quantity, DateTime, Price) VALUES (%s,%s,%s,%s,%s,%s)',
             (bill_g2B, guest_ids[2], SVC_BAR, 1, '2025-09-05 21:00:00', 15.00))
 cur.execute("UPDATE BILL SET TotalAmount = TotalAmount + 15.00 WHERE BillID=%s", (bill_g2B,))
 
@@ -457,7 +458,7 @@ for label, tbl in [
     ("Reserved Rooms", "RESERVED_ROOM"),
     ("Occupants",      "OCCUPANTS"),
     ("Bills",          "BILL"),
-    ("Services",       "Services"),
+    ("Services",     'SERVICES'),
 ]:
     cur.execute(f"SELECT COUNT(*) FROM {tbl}")
     print(f"  {label+':':<16} {cur.fetchone()[0]}")
