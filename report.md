@@ -86,7 +86,39 @@ EXISTING DATA OVERVIEW:
 
 - [q1.sql](./queries/q1.sql)
 Query 1 Explanation:
+  - The Grand Shenandoah has 3 room types: Standard Single,
+    Double, and Suite.
+  - One Standard Single room is already checked_in for Jul 15-17,
+    meaning ALL Standard Single rooms of that type are blocked
+    and should not appear in the availability results.
+  - Room prices are set per day of week within the current season
+    (High Season). Jul 15 is a Tuesday and Jul 16 is a Wednesday,
+    and each day has its own rate, so the average across the two
+    nights will reflect both day-of-week and season pricing.
+  - The gold category has a 15% discount which is applied to the
+    average nightly price shown to the guest.
 
+EXPECTED SELECT RESULT:
+  Double and Suite appear with their discounted avg nightly rate.
+  Standard Single does NOT appear.
+
+1a) SELECT: available room types with season- and day-adjusted
+    average cost per night, after gold discount.
+    Filters to the correct season covering Jul 15-16 and only
+    pulls prices for Tue and Wed (the two nights of the stay).
+
+1b) INSERT: add the new gold guest to the database.
+    This guest did not previously exist. IdNumber PA99001122
+    is used to look them up in the subsequent inserts.
+
+1c) INSERT: create a reservation for the new guest at Hotel A.
+    Uses a subquery to find the GuestID by IdNumber so no
+    hardcoded ID is needed.
+
+1d) INSERT: reserve a Double room for Jul 15-17.
+    Double was chosen because it appeared as available in 1a.
+    RoomID is NULL at booking time — a specific room is only
+    assigned at check-in.
 
 
 ![i](./images/i1.png)
@@ -96,9 +128,45 @@ Query 1 Explanation:
 ![i](./images/i5.png)
 ![i](./images/i6.png)
 
-You run 1a first, and then 1b
 
 ### Query 2
+Query 2 Explanation:
+EXISTING DATA:
+  - Blue Ridge Inn has 3 Double rooms (room numbers vary by
+    load order, but 3 were inserted by the loader).
+  - One of those Double rooms is already checked_in from Jul 18
+    to Jul 21 by another guest. That room will be excluded from
+    the available rooms list returned by the select query.
+  - Mrs. Smith's reservation already exists in RESERVATION and
+    RESERVED_ROOM with Status = 'reserved' and CheckInDate =
+    '2025-07-18'. Her GuestID exists in GUEST with category 'gold'.
+  - Mr. Smith does NOT exist in the database yet — he is added
+    as a new guest in 2b.
+
+EXPECTED SELECT RESULT:
+  2 of the 3 Double rooms appear as available (the occupied one
+  is excluded).
+
+2a) SELECT: Double rooms at Blue Ridge Inn not currently occupied
+    on Jul 18. Excludes any room where a checked_in reservation
+    overlaps that date.
+
+2b) INSERT: add Mr. Smith as a new guest.
+    He was not previously in the database. No category assigned
+    since he is not a registered loyalty member.
+
+2c) UPDATE: assign an available Double room to Mrs. Smith's
+    reserved room row and set Status to checked_in.
+    The subquery picks the first available Double room at
+    Blue Ridge Inn that is not already checked_in.
+    
+2d) INSERT: record Mrs. Smith as an occupant of the room.
+    Her GuestID is linked because she is a registered guest.
+
+2e) INSERT: record Mr. Smith as an occupant.
+    He was just added in 2b. His GuestID is looked up by
+    IdNumber since he has no prior record.
+
 - [q2.sql](./queries/q2.sql)
 
 ![i](./images/q3.png)
@@ -106,6 +174,39 @@ You run 1a first, and then 1b
 ![i](./images/q3b.png)
 
 ### Query 3
+Query 3 Explanation:
+EXISTING DATA:
+  - Mrs. Smith's RESERVED_ROOM row covers Jul 18-20 (Fri-Sun).
+    Jul 18 is a Friday and Jul 19 is a Saturday, so the two
+    nights have different ROOM_PRICE entries (Fri rate vs Sat
+    rate), satisfying the requirement that price is not the
+    same on every night.
+  - The stay falls fully within Summer Season (May 25 - Sep 1),
+    so season pricing is consistent throughout.
+  - Mrs. Smith is a gold guest (15% discount), which changes
+    the total price of the reservation.
+  - A BILL record already exists for her stay from the loader.
+    Query 3a adds one additional room service charge to that bill.
+
+EXPECTED SELECT RESULT:
+  One row showing check-in/out dates, room type, the Fri and Sat
+  nightly rates (which differ), the discounted room subtotal,
+  the room service charge, and the grand total.
+
+3a) INSERT: add a room service charge to Mrs. Smith's bill.
+    This demonstrates adding an extra service to an existing bill.
+
+3b) SELECT: billing statement for Mrs. Smith.
+    Joins through SEASON to get the correct seasonal prices,
+    then explicitly fetches the Fri and Sat ROOM_PRICE entries
+    to show the nightly rate variation. Applies the gold
+    category discount to the room subtotal. Sums all service
+    charges from SERVICES via the BILL.
+    
+3c) UPDATE: mark the reserved room as checked_out.
+
+3d) UPDATE: mark the reservation itself as checked_out.
+
 - [q3.sql](./queries/q3.sql)
 
 ![i](./images/i7.png)
@@ -113,11 +214,41 @@ You run 1a first, and then 1b
 ![i](./images/i9.png)
 
 ### Query 4
+Query 4 Explanation:
+EXISTING DATA:
+  - Mrs. Smith's room at Blue Ridge Inn on Jul 18 has two
+    occupants recorded in OCCUPANTS: Mrs. Smith herself
+    (the reserver, a registered guest with GuestID linked)
+    and Mr. Smith (added as a new guest at check-in, also
+    linked by GuestID). This guarantees the query returns
+    at least 2 people for that room and date.
+
+EXPECTED RESULT:
+  Two rows — one for Mrs. Smith and one for Mr. Smith —
+  both showing the same room number and check-in date,
+  along with the reserver's ID number.
 - [q4.sql](./queries/q4.sql)
 
 ![a](./images/q4.png)
 
 ### Query 5
+Query 5 Explanation:
+EXISTING DATA:
+  - One gold guest (Robert Chen equivalent, guest_ids[2] in
+    the loader) has two completed stays in 2025:
+      1. The Grand Shenandoah, Aug 5-7 2025 (Double room,
+         within High Season, gold discount applied)
+      2. Blue Ridge Inn, Sep 5-7 2025 (Standard Single,
+         within Off Season, gold discount applied)
+    Both stays have BILL records with TotalAmount populated,
+    including extra service charges added on top.
+  - No other guest has stays at 2+ different hotels in 2025,
+    so only this one guest should appear in the results.
+
+EXPECTED RESULT:
+  One row showing the guest's ID number, gold category,
+  2 hotels visited, 2 reservations, and the combined total
+  spent across both stays including services.
 - [q5.sql](./queries/q5.sql)
 
 ![a](./images/q5.png)
