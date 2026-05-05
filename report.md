@@ -84,7 +84,9 @@ You run 1a first, and then 1b
 ### Query 3
 - [q3.sql](./queries/q3.sql)
 
-*Describe the queries in detail with screenshots of setup and results*
+![i](./images/i7.png)
+![i](./images/i8.png)
+![i](./images/i9.png)
 
 ### Query 4
 - [q4.sql](./queries/q4.sql)
