@@ -1,9 +1,4 @@
--- ============================================================
--- HW7 Query Demonstrations
--- Run each block separately in PgAdmin.
--- Hotel A = The Grand Shenandoah
--- Hotel B = Blue Ridge Inn
--- ============================================================
+
 
 
 -- ============================================================
