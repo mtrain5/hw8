@@ -1,6 +1,5 @@
 """
-HW7 - Hotel Database Data Loader
-Run: python load_data.py
+HW8
 
 Minimum requirements met:
   5 hotels, 2 seasons each, 2 categories (standard/gold),
@@ -28,9 +27,9 @@ conn = psycopg2.connect(
     host="data.cs.jmu.edu",
     port=5433,
     dbname="sp26",
-    user="berggrmb",
-    password="113944400",
-    options="-c search_path=berggrmb"
+    user="tran23mx",
+    password="114016184",
+    options="-c search_path=tran23mx"
 )
 cur = conn.cursor()
 print("Connected.")
