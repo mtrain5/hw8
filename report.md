@@ -3,7 +3,7 @@
 
 ## ER Model
 *insert the image here*
-![conference review EER](./images/ConferenceReviewEER.drawio.png)
+![conference review EER](./images/Relational_Model_HW8.png)
 *describe any changes since HW7*
 
 ## Relational Model
