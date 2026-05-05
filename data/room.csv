@@ -1,33 +1,37 @@
-name,type,capacity,notes
-King 136,Lecture Room,90,
-King 140,Lecture Room,32,
-King 143,Lecture Room,32,
-King 148,Lecture Room,48,
-King 150,Lecture Room,40,Group seating
-King 159,Lecture Room,170,
-King 236,Lecture Room,50,Group seating; Linux laptops
-King 243,Lecture Room,36,
-King 248,Computer Lab,30,CS Linux lab #1
-King 250,Computer Lab,34,CS Linux lab #2
-King 259,Lecture Room,75,nTelos room
-King 336,Computer Lab,32,IT Linux Lab
-King 348,Lecture Room,36,
-King 350,Lecture Room,48,
-EnGeo 0303,Lecture Room,28,
-EnGeo 1202,Lecture Room,36,
-EnGeo 1204,Lecture Room,50,
-EnGeo 1207,Lecture Room,30,
-EnGeo 1208,Lecture Room,40,
-EnGeo 1209,Lecture Room,55,
-EnGeo 1210,Lecture Room,60,
-EnGeo 1301,Lecture Room,126,
-EnGeo 1302,Lecture Room,160,
-EnGeo 2202,Lecture Room,32,
-EnGeo 2203,Laboratory,24,High tables/benches
-EnGeo 2204,Computer Lab,32,CS Linux lab #3
-EnGeo 2208,Lecture Room,40,
-EnGeo 2209,Lecture Room,32,Group seating; Linux laptops
-EnGeo 2210,Lecture Room,60,
-EnGeo 2301,Lecture Room,322,
-EnGeo 3009,Laboratory,28,
-EnGeo 3107,Laboratory,32,
+RoomID,HotelID,HotelName,RoomTypeID,RoomTypeName,room_number,floor
+1,1,The Grand Shenandoah,1,Standard Single,101,1
+2,1,The Grand Shenandoah,1,Standard Single,102,1
+3,1,The Grand Shenandoah,1,Standard Single,103,1
+4,1,The Grand Shenandoah,2,Double,201,2
+5,1,The Grand Shenandoah,2,Double,202,2
+6,1,The Grand Shenandoah,2,Double,203,2
+7,1,The Grand Shenandoah,3,Suite,301,3
+8,1,The Grand Shenandoah,3,Suite,302,3
+9,1,The Grand Shenandoah,3,Suite,303,3
+10,2,Blue Ridge Inn,4,Standard Single,101,1
+11,2,Blue Ridge Inn,4,Standard Single,102,1
+12,2,Blue Ridge Inn,4,Standard Single,103,1
+13,2,Blue Ridge Inn,5,Double,201,2
+14,2,Blue Ridge Inn,5,Double,202,2
+15,2,Blue Ridge Inn,5,Double,203,2
+16,3,Skyline Summit Hotel,6,Double,101,1
+17,3,Skyline Summit Hotel,6,Double,102,1
+18,3,Skyline Summit Hotel,6,Double,103,1
+19,3,Skyline Summit Hotel,7,King Deluxe,201,2
+20,3,Skyline Summit Hotel,7,King Deluxe,202,2
+21,3,Skyline Summit Hotel,7,King Deluxe,203,2
+22,4,Piedmont Plaza Hotel,8,Standard Single,101,1
+23,4,Piedmont Plaza Hotel,8,Standard Single,102,1
+24,4,Piedmont Plaza Hotel,8,Standard Single,103,1
+25,4,Piedmont Plaza Hotel,9,Double,201,2
+26,4,Piedmont Plaza Hotel,9,Double,202,2
+27,4,Piedmont Plaza Hotel,9,Double,203,2
+28,4,Piedmont Plaza Hotel,10,Suite,301,3
+29,4,Piedmont Plaza Hotel,10,Suite,302,3
+30,4,Piedmont Plaza Hotel,10,Suite,303,3
+31,5,Appalachian Peaks Resort,11,Cabin Suite,101,1
+32,5,Appalachian Peaks Resort,11,Cabin Suite,102,1
+33,5,Appalachian Peaks Resort,11,Cabin Suite,103,1
+34,5,Appalachian Peaks Resort,12,Standard Double,201,2
+35,5,Appalachian Peaks Resort,12,Standard Double,202,2
+36,5,Appalachian Peaks Resort,12,Standard Double,203,2
