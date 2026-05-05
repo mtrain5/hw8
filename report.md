@@ -91,9 +91,9 @@ You run 1a first, and then 1b
 ### Query 4
 - [q4.sql](./queries/q4.sql)
 
-*Describe the queries in detail with screenshots of setup and results*
+![a](./images/q4.png)
 
 ### Query 5
 - [q5.sql](./queries/q5.sql)
 
-*Describe the queries in detail with screenshots of setup and results*
+![a](./images/q5.png)
