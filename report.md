@@ -67,7 +67,14 @@ by running [generate.py](./data/generate.py)
 
 - [q1.sql](./queries/q1.sql)
 
-*Describe the queries in detail with screenshots of the data setup and the results*
+![i](./images/i1.png)
+![i](./images/i2.png)
+![i](./images/i3.png)
+![i](./images/i4.png)
+![i](./images/i5.png)
+![i](./images/i6.png)
+
+You run 1a first, and then 1b
 
 ### Query 2
 - [q2.sql](./queries/q2.sql)

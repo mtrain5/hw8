@@ -47,36 +47,34 @@ WHERE h.Name = 'The Grand Shenandoah'
 GROUP BY rt.type_name, c.DiscountPercent
 ORDER BY rt.type_name;
 
-
--- 1b) INSERT: new gold guest
---     (replace placeholder values with actual guest data as needed)
-INSERT INTO GUEST (IdType, IdNumber, Address, HomePhone, MobilePhone, Category_name)
-VALUES ('passport', 'PA99001122',
-        '45 Maple Ave, Harrisonburg, VA 22801',
-        '540-555-0011', '540-555-0022',
-        'gold')
-RETURNING GuestID;   -- note this ID for the next insert
-
-
--- 1c) INSERT: reservation + reserved room for the new guest
---     (substitute the GuestID returned above and desired RoomTypeID)
-INSERT INTO RESERVATION (GuestID, HotelID, BookingDateTime, Status)
-SELECT <new_guest_id>,
-       h.HotelID,
-       NOW(),
-       'confirmed'
-FROM   HOTEL h
-WHERE  h.Name = 'The Grand Shenandoah'
-RETURNING ReservationID;
-
+-- 1b) run after above
+WITH new_guest AS (
+    INSERT INTO GUEST (IdType, IdNumber, Address, HomePhone, MobilePhone, Category_name)
+    VALUES ('passport', 'PA99001122',
+            '45 Maple Ave, Harrisonburg, VA 22801',
+            '540-555-0011', '540-555-0022',
+            'gold')
+    RETURNING GuestID
+),
+new_reservation AS (
+    INSERT INTO RESERVATION (GuestID, HotelID, BookingDateTime, Status)
+    SELECT g.GuestID,
+           h.HotelID,
+           NOW(),
+           'confirmed'
+    FROM new_guest g, HOTEL h
+    WHERE h.Name = 'The Grand Shenandoah'
+    RETURNING ReservationID
+)
 INSERT INTO RESERVED_ROOM (ReservationID, RoomTypeID, RoomID, CheckInDate, CheckOutDate, Status)
-SELECT <new_reservation_id>,
+SELECT r.ReservationID,
        rt.RoomTypeID,
        NULL,
        '2025-07-15',
        '2025-07-17',
        'reserved'
-FROM   ROOM_TYPE rt
-JOIN   HOTEL h ON h.HotelID = rt.HotelID
-WHERE  h.Name        = 'The Grand Shenandoah'
-  AND  rt.type_name  = 'Double';   -- pick an available type from 1a result
+FROM new_reservation r,
+     ROOM_TYPE rt
+JOIN HOTEL h ON h.HotelID = rt.HotelID
+WHERE h.Name       = 'The Grand Shenandoah'
+  AND rt.type_name = 'Double';
