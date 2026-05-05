@@ -53,15 +53,15 @@ We made three changes to the data to support the queries. First, we added fake.s
 
 ## Queries
 - General query file: [queries.sql](./queries/queries.sql)
-Here are the steps to do before each query:
+# Here are the steps to do before each query:
 - Step 0: drop tables
-and run [drop_fk.sql](./database/drop_fk.sql)
+by running [drop_fk.sql](./database/drop_fk.sql)
 - Step 1: build the schema
-and run [drop_create_tables.sql](./database/drop_create_tables.sql)
+by running [drop_create_tables.sql](./database/drop_create_tables.sql)
 - Step 2: add fk
-and run [add_fk.sql](./database/add_fk.sql)
+by running [add_fk.sql](./database/add_fk.sql)
 - Step 3: generate data
-and run [generate.py](./data/generate.py)
+by running [generate.py](./data/generate.py)
 - Step 4: run the queries below
 ### Query 1
 
